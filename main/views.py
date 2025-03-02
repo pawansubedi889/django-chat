@@ -44,12 +44,12 @@ def index(request):
     """
     if not request.user.is_authenticated:
         print("Not Logged In!")
-        return render(request, "chat/index.html", {})
+        return render(request, "main/index.html", {})
     else:
         username = request.user.username
         id = getUserId(username)
         friends = getFriendsList(id)
-        return render(request, "chat/Base.html", {'friends': friends})
+        return render(request, "main/Base.html", {'friends': friends})
 
 
 def search(request):
@@ -71,7 +71,7 @@ def search(request):
         for user in users:
             if query in user.name or query in user.username:
                 user_ls.append(user)
-        return render(request, "chat/search.html", {'users': user_ls, })
+        return render(request, "main/search.html", {'users': user_ls, })
 
     try:
         users = users[:10]
@@ -79,7 +79,7 @@ def search(request):
         users = users[:]
     id = getUserId(request.user.username)
     friends = getFriendsList(id)
-    return render(request, "chat/search.html", {'users': users, 'friends': friends})
+    return render(request, "main/search.html", {'users': users, 'friends': friends})
 
 
 def addFriend(request, name):
@@ -122,7 +122,7 @@ def chat(request, username):
 
     if request.method == "GET":
         friends = getFriendsList(id)
-        return render(request, "chat/messages.html",
+        return render(request, "main/messages.html",
                       {'messages': messages,
                        'friends': friends,
                        'curr_user': curr_user, 'friend': friend})
