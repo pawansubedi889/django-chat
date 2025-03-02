@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'register.apps.RegisterConfig',
     'rest_framework',
     'main',
+    'crispy_forms',
+    'crispy_bootstrap4',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
@@ -114,6 +117,12 @@ USE_I18N = True
 
 USE_TZ = True
 
+STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
